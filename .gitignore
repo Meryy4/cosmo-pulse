@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+# data and models stay local
+data/raw/*
+data/processed/*
+!data/**/.gitkeep
+*.wav
+*.mp3
+*.flac
+models/
+*.gguf
+*.pt
+*.bin
+.DS_Store

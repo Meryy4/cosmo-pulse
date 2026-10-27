@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    command: uvicorn cosmo_pulse.api.main:app --host 0.0.0.0 --port 8000
+    ports: ["8000:8000"]
+    env_file: .env
+    depends_on: [ollama]
+  dashboard:
+    build: .
+    command: streamlit run dashboard/app.py --server.port 8501 --server.address 0.0.0.0
+    ports: ["8501:8501"]
+    env_file: .env
+    depends_on: [api]
+  ollama:
+    image: ollama/ollama
+    ports: ["11434:11434"]
+    volumes: [ollama:/root/.ollama]
+volumes:
+  ollama:
